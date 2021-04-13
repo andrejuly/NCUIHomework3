@@ -1,5 +1,5 @@
 {
-  "name": "NC_UI_Homework3",
+  "name": "NCUIHomework3",
   "version": "1.0.0",
   "main": "build/index.js",
   "type": "module",
@@ -7,7 +7,7 @@
     "build": "npm run tslint && rimraf ./build && tsc",
     "buildAndStart": "npm run build && npm run start",
     "start": "node build/index.js",
-    "tslint": "tslint -c tslint.json '*.ts'"
+    "tslint": "tslint -c tslint.json 'src/*.ts'"
   },
   "devDependencies": {
     "@types/node": "14.14.22",

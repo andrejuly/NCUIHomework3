@@ -1,38 +1,44 @@
-import {BinarySearchTree} from "./BinarySearchTree.js";
-import { Node } from "./Node.js";
-
-const BST: BinarySearchTree <number> = new BinarySearchTree();
+import * as readlineSync from "readline-sync";
+import { BinarySearchTree } from "./binary-search-tree.js";
+import { NodeTree } from "./node-tree.js";
 
 function index(): void {
-BST.insert(11);
-BST.insert(7);
-BST.insert(9);
-BST.insert(15);
-BST.insert(6);
-BST.print();
+    const BST: BinarySearchTree <number> = new BinarySearchTree();
 
-BST.insert(11);
-BST.insert(3);
-console.log();
-console.log();
-BST.print();
-
-let searchNode1: Node<number> | undefined = BST.search(10);
-let searchNode2: Node<number> | undefined = BST.search(3);
-console.log();
-console.log();
-console.log(searchNode1?.value);
-console.log(searchNode2?.value);
-
-console.log();
-console.log();
-BST.remove(11);
-BST.print();
-
-console.log();
-console.log();
-BST.remove(6);
-BST.print();
+    while (true) {
+        console.log("");
+        console.log("");
+        console.log("Что сделать с двоичным деревом поиска?");
+        console.log("1) Добавить элемента в дерево");
+        console.log("2) Извлечь элемент по ключу");
+        console.log("3) Удаление элемента с заданным ключом");
+        console.log("4) Вывод всего дерева");
+        console.log("5) Выход");
+        const сhoice = readlineSync.question("Your choice:  ");
+        switch (сhoice) {
+            case "1":
+                const insert = readlineSync.question("Key to insert = ");
+                BST.insert(+insert);
+                break;
+            case "2":
+                const keyFind = readlineSync.question("Key to find = ");
+                const tmp: NodeTree<number> | undefined = BST.search(+keyFind);
+                console.log(tmp?.value);
+                break;
+            case "3":
+                const keyDelete = readlineSync.question("Key to remove = ");
+                BST.remove(+keyDelete);
+                break;
+            case "4":
+                console.log("");
+                BST.print();
+                break;
+            case "5":
+                return;
+            default:
+                console.log("Введено некорректное значение");
+        }
+    }
 }
 
 index();
